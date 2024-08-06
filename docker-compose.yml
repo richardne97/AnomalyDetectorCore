@@ -1,0 +1,16 @@
+version: '3.4'
+
+services:
+  anomalydetectorcore:
+    image: iot.senslink.net:5000/wra/anomalydetectorcore
+    ports:
+      - 8010:8010
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    stdin_open: true # docker run -i
+    tty: true        # docker run -t
